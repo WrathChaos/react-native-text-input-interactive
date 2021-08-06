@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  View,
   Dimensions,
   StyleProp,
   TextInput,
@@ -13,7 +12,7 @@ import {
  */
 import styles from "./InteractiveTextInput.style";
 
-const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("screen");
+const { width: ScreenWidth } = Dimensions.get("screen");
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
 const SUCCESS_COLOR = "#008FEB";
@@ -26,17 +25,16 @@ type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 interface IInteractiveTextInputProps extends TextInputProps {
   style?: CustomStyleProp;
 }
-interface IProps {}
 
 interface IState {}
 
 export default class InteractiveTextInput extends React.Component<
-  IProps,
+  IInteractiveTextInputProps,
   IState
 > {
   interpolatedColor: Animated.Value;
 
-  constructor(props: IProps) {
+  constructor(props: IInteractiveTextInputProps) {
     super(props);
     this.interpolatedColor = new Animated.Value(ORIGINAL_VALUE);
     this.state = {};
@@ -50,7 +48,7 @@ export default class InteractiveTextInput extends React.Component<
     }).start();
   };
 
-  showSuccessColor = () => {
+  showFocusColor = () => {
     Animated.timing(this.interpolatedColor, {
       duration: 450,
       toValue: SUCCESS_VALUE,
@@ -78,7 +76,7 @@ export default class InteractiveTextInput extends React.Component<
         }}
         placeholder="Email"
         onFocus={() => {
-          this.showSuccessColor();
+          this.showFocusColor();
         }}
         onBlur={() => {
           this.showOriginColor();
