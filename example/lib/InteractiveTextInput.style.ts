@@ -1,9 +1,10 @@
-import { ViewStyle, Dimensions, StyleSheet } from "react-native";
-import { ImageStyle } from "react-native-fast-image";
+import { ViewStyle, Dimensions, ImageStyle, StyleSheet } from "react-native";
 const { width: ScreenWidth } = Dimensions.get("screen");
 
 interface Style {
   container: ViewStyle;
+  iconContainerStyle: ViewStyle;
+  iconImageStyle: ImageStyle;
 }
 
 export const _textInputStyle = (borderColor: any): ViewStyle => ({
@@ -22,5 +23,14 @@ export default StyleSheet.create<Style>({
   container: {
     flexDirection: "row",
     alignItems: "center",
+  },
+  iconContainerStyle: {
+    right: 16,
+    position: "absolute",
+  },
+  iconImageStyle: {
+    height: 20,
+    width: 20,
+    tintColor: "#b5b9bb",
   },
 });

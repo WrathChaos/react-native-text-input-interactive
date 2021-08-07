@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   View,
   TextStyle,
+  ImageStyle,
+  ImageSourcePropType,
 } from "react-native";
 /**
  * ? Local Imports
@@ -25,10 +27,16 @@ const ANIMATED_VALUE = 1;
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
+type CustomImageStyleProp =
+  | StyleProp<ImageStyle>
+  | Array<StyleProp<ImageStyle>>;
 
 interface IInteractiveTextInputProps extends TextInputProps {
   style?: CustomStyleProp;
   textInputStyle?: CustomTextStyleProp;
+  iconContainerStyle?: CustomStyleProp;
+  iconImageStyle?: CustomImageStyleProp;
+  iconImageSource?: ImageSourcePropType;
   ImageComponent?: any;
   IconComponent?: any;
   enableIcon?: boolean;
@@ -37,6 +45,7 @@ interface IInteractiveTextInputProps extends TextInputProps {
   animatedPlaceholderTextColor?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  onIconPress?: () => void;
 }
 
 interface IState {}
@@ -76,6 +85,10 @@ export default class InteractiveTextInput extends React.Component<
   renderIcon = () => {
     const {
       enableIcon,
+      iconImageStyle,
+      iconContainerStyle,
+      iconImageSource,
+      onIconPress,
       ImageComponent = Image,
       IconComponent = TouchableOpacity,
     } = this.props;
@@ -83,19 +96,13 @@ export default class InteractiveTextInput extends React.Component<
     return (
       enableIcon && (
         <IconComponent
-          style={{
-            right: 16,
-            position: "absolute",
-          }}
+          style={[styles.iconContainerStyle, iconContainerStyle]}
+          onPress={onIconPress}
         >
           <ImageComponent
             resizeMode="contain"
-            source={require("../assets/visibility-button.png")}
-            style={{
-              height: 20,
-              width: 20,
-              tintColor: "#b5b9bb",
-            }}
+            source={iconImageSource}
+            style={[styles.iconImageStyle, iconImageStyle]}
           />
         </IconComponent>
       )

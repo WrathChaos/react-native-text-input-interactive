@@ -9,7 +9,7 @@
  */
 
 import React from "react";
-import { SafeAreaView } from "react-native";
+import { Alert, SafeAreaView } from "react-native";
 import InteractiveTextInput from "./lib/InteractiveTextInput";
 
 const App = () => {
@@ -22,7 +22,13 @@ const App = () => {
       }}
     >
       <InteractiveTextInput mainColor="red" />
-      <InteractiveTextInput placeholder="Password" secureTextEntry enableIcon />
+      <InteractiveTextInput
+        placeholder="Password"
+        secureTextEntry
+        enableIcon
+        iconImageSource={require("./assets/visibility-button.png")}
+        onIconPress={() => Alert.alert("hello", "hello")}
+      />
       <InteractiveTextInput />
     </SafeAreaView>
   );
