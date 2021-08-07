@@ -15,8 +15,14 @@ import InteractiveTextInput from "./lib/InteractiveTextInput";
 const App = () => {
   return (
     <SafeAreaView
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+      style={{
+        height: 300,
+        alignItems: "center",
+        justifyContent: "space-evenly",
+      }}
     >
+      <InteractiveTextInput />
+      <InteractiveTextInput />
       <InteractiveTextInput />
     </SafeAreaView>
   );

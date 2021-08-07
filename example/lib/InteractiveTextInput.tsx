@@ -19,6 +19,7 @@ const SUCCESS_COLOR = "#008FEB";
 const ORIGINAL_COLOR = "transparent";
 const ORIGINAL_VALUE = 0;
 const SUCCESS_VALUE = 1;
+const PLACEHOLDER_COLOR = "#757575";
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 
@@ -42,7 +43,7 @@ export default class InteractiveTextInput extends React.Component<
 
   showOriginColor = () => {
     Animated.timing(this.interpolatedColor, {
-      duration: 450,
+      duration: 350,
       toValue: ORIGINAL_VALUE,
       useNativeDriver: false,
     }).start();
@@ -61,6 +62,10 @@ export default class InteractiveTextInput extends React.Component<
       inputRange: [ORIGINAL_VALUE, SUCCESS_VALUE],
       outputRange: [ORIGINAL_COLOR, SUCCESS_COLOR],
     });
+    let placeholderTextColor = this.interpolatedColor.interpolate({
+      inputRange: [ORIGINAL_VALUE, SUCCESS_VALUE],
+      outputRange: [PLACEHOLDER_COLOR, SUCCESS_COLOR],
+    });
     return (
       <AnimatedTextInput
         style={{
@@ -74,6 +79,7 @@ export default class InteractiveTextInput extends React.Component<
           borderWidth: 1,
           borderColor: borderColor,
         }}
+        placeholderTextColor={placeholderTextColor}
         placeholder="Email"
         onFocus={() => {
           this.showFocusColor();
