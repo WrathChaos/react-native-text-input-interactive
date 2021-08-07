@@ -1,14 +1,18 @@
 {
-  "name": "react-native-typescript-library-starter",
-  "version": "1.0.5",
-  "description": "Extremely easy to create a React Native Component Library with both Stateful and Functional Component Examples.",
+  "name": "react-native-text-input-interactive",
+  "version": "0.1.0",
+  "description": "Fully customizable, animated text input for React Native with beautiful and elegant design",
   "main": "./build/dist/index.js",
-  "repository": "git@github.com:WrathChaos/react-native-typescript-library-starter.git",
+  "repository": "git@github.com:WrathChaos/react-native-text-input-interactive.git",
   "author": "FreakyCoder <kurayogun@gmail.com>",
   "license": "MIT",
   "homepage": "https://www.freakycoder.com",
-  "bugs": "https://github.com/WrathChaos/react-native-typescript-library-starter/issues",
+  "bugs": "https://github.com/WrathChaos/react-native-text-input-interactive/issues",
   "keywords": [
+    "text-input",
+    "text-field",
+    "interactive",
+    "animated",
     "FreakyCoder",
     "freakycoder",
     "kuray",
@@ -26,10 +30,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "peerDependencies": {
-    "react": ">= 16.x.x",
-    "react-native": ">=0.63.x"
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "@types/react": "^16.9.53",
     "@types/react-native": "^0.63.25",
