@@ -22,7 +22,7 @@ const App = () => {
       }}
     >
       <InteractiveTextInput />
-      <InteractiveTextInput />
+      <InteractiveTextInput placeholder="Password" secureTextEntry enableIcon />
       <InteractiveTextInput />
     </SafeAreaView>
   );

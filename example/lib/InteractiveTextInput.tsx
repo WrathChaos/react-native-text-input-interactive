@@ -6,6 +6,9 @@ import {
   TextInputProps,
   ViewStyle,
   Animated,
+  Image,
+  TouchableOpacity,
+  View,
 } from "react-native";
 /**
  * ? Local Imports
@@ -25,6 +28,9 @@ type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 
 interface IInteractiveTextInputProps extends TextInputProps {
   style?: CustomStyleProp;
+  ImageComponent?: any;
+  IconComponent?: any;
+  enableIcon?: boolean;
 }
 
 interface IState {}
@@ -57,7 +63,40 @@ export default class InteractiveTextInput extends React.Component<
     }).start();
   };
 
-  render() {
+  /* -------------------------------------------------------------------------- */
+  /*                               Render Methods                               */
+  /* -------------------------------------------------------------------------- */
+
+  renderIcon = () => {
+    const {
+      enableIcon,
+      ImageComponent = Image,
+      IconComponent = TouchableOpacity,
+    } = this.props;
+
+    return (
+      enableIcon && (
+        <IconComponent
+          style={{
+            right: 16,
+            position: "absolute",
+          }}
+        >
+          <ImageComponent
+            resizeMode="contain"
+            source={require("../assets/visibility-button.png")}
+            style={{
+              height: 20,
+              width: 20,
+              tintColor: "#b5b9bb",
+            }}
+          />
+        </IconComponent>
+      )
+    );
+  };
+
+  renderAnimatedTextInput = () => {
     let borderColor = this.interpolatedColor.interpolate({
       inputRange: [ORIGINAL_VALUE, SUCCESS_VALUE],
       outputRange: [ORIGINAL_COLOR, SUCCESS_COLOR],
@@ -87,7 +126,17 @@ export default class InteractiveTextInput extends React.Component<
         onBlur={() => {
           this.showOriginColor();
         }}
+        {...this.props}
       />
+    );
+  };
+
+  render() {
+    return (
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        {this.renderAnimatedTextInput()}
+        {this.renderIcon()}
+      </View>
     );
   }
 }
