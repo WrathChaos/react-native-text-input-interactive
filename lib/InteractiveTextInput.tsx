@@ -19,7 +19,7 @@ import styles, { _textInputStyle } from "./InteractiveTextInput.style";
 
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
-const MAIN_COLOR = "#008FEB";
+const MAIN_COLOR = "#2a41cb";
 const ORIGINAL_COLOR = "transparent";
 const PLACEHOLDER_COLOR = "#757575";
 const ORIGINAL_VALUE = 0;

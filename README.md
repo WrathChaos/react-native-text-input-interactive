@@ -61,7 +61,7 @@ TextInput and Icon is fully customizable thanks to `prop-drilling`, you can use 
 
 | Property                     |        Type         |     Default      | Description                                                                                                           |
 | ---------------------------- | :-----------------: | :--------------: | --------------------------------------------------------------------------------------------------------------------- |
-| mainColor                    |       string        |     #008FEB      | change the main animated color                                                                                        |
+| mainColor                    |       string        |     #2a41cb      | change the main animated color                                                                                        |
 | originalColor                |       string        |   transparent    | change the original/default animated color                                                                            |
 | animatedPlaceholderTextColor |       string        |     #757575      | change the placeholder text animated color                                                                            |
 | ImageComponent               |      Component      |      Image       | set your own image component such as; `FastImage`                                                                     |
