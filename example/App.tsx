@@ -18,7 +18,7 @@ import {
   Dimensions,
   SafeAreaView,
 } from "react-native";
-import InteractiveTextInput from "./lib/InteractiveTextInput";
+import InteractiveTextInput from "react-native-text-input-interactive";
 
 const { width: ScreenWidth } = Dimensions.get("screen");
 

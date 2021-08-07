@@ -1,8 +1,8 @@
 {
   "name": "react-native-text-input-interactive",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fully customizable, animated text input for React Native with beautiful and elegant design",
-  "main": "./build/dist/index.js",
+  "main": "./build/dist/InteractiveTextInput.js",
   "repository": "git@github.com:WrathChaos/react-native-text-input-interactive.git",
   "author": "FreakyCoder <kurayogun@gmail.com>",
   "license": "MIT",
