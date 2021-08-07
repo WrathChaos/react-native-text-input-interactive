@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Dimensions,
   StyleProp,
   TextInput,
   TextInputProps,
@@ -9,28 +8,35 @@ import {
   Image,
   TouchableOpacity,
   View,
+  TextStyle,
 } from "react-native";
 /**
  * ? Local Imports
  */
-import styles from "./InteractiveTextInput.style";
+import styles, { _textInputStyle } from "./InteractiveTextInput.style";
 
-const { width: ScreenWidth } = Dimensions.get("screen");
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
-const SUCCESS_COLOR = "#008FEB";
+const MAIN_COLOR = "#008FEB";
 const ORIGINAL_COLOR = "transparent";
-const ORIGINAL_VALUE = 0;
-const SUCCESS_VALUE = 1;
 const PLACEHOLDER_COLOR = "#757575";
+const ORIGINAL_VALUE = 0;
+const ANIMATED_VALUE = 1;
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
+type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
 
 interface IInteractiveTextInputProps extends TextInputProps {
   style?: CustomStyleProp;
+  textInputStyle?: CustomTextStyleProp;
   ImageComponent?: any;
   IconComponent?: any;
   enableIcon?: boolean;
+  mainColor?: string;
+  originalColor?: string;
+  animatedPlaceholderTextColor?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 interface IState {}
@@ -58,7 +64,7 @@ export default class InteractiveTextInput extends React.Component<
   showFocusColor = () => {
     Animated.timing(this.interpolatedColor, {
       duration: 450,
-      toValue: SUCCESS_VALUE,
+      toValue: ANIMATED_VALUE,
       useNativeDriver: false,
     }).start();
   };
@@ -97,43 +103,40 @@ export default class InteractiveTextInput extends React.Component<
   };
 
   renderAnimatedTextInput = () => {
+    const mainColor = this.props.mainColor || MAIN_COLOR;
+    const originalColor = this.props.originalColor || ORIGINAL_COLOR;
+    const animatedPlaceholderTextColor =
+      this.props.animatedPlaceholderTextColor || PLACEHOLDER_COLOR;
+
     let borderColor = this.interpolatedColor.interpolate({
-      inputRange: [ORIGINAL_VALUE, SUCCESS_VALUE],
-      outputRange: [ORIGINAL_COLOR, SUCCESS_COLOR],
+      inputRange: [ORIGINAL_VALUE, ANIMATED_VALUE],
+      outputRange: [originalColor, mainColor],
     });
     let placeholderTextColor = this.interpolatedColor.interpolate({
-      inputRange: [ORIGINAL_VALUE, SUCCESS_VALUE],
-      outputRange: [PLACEHOLDER_COLOR, SUCCESS_COLOR],
+      inputRange: [ORIGINAL_VALUE, ANIMATED_VALUE],
+      outputRange: [animatedPlaceholderTextColor, mainColor],
     });
     return (
       <AnimatedTextInput
-        style={{
-          height: 50,
-          width: ScreenWidth * 0.9,
-          backgroundColor: "#eceef5",
-          paddingLeft: 16,
-          paddingRight: 16,
-          borderRadius: 8,
-          justifyContent: "center",
-          borderWidth: 1,
-          borderColor: borderColor,
-        }}
         placeholderTextColor={placeholderTextColor}
         placeholder="Email"
+        {...this.props}
+        style={[_textInputStyle(borderColor), this.props.textInputStyle]}
         onFocus={() => {
           this.showFocusColor();
+          this.props.onFocus && this.props.onFocus();
         }}
         onBlur={() => {
           this.showOriginColor();
+          this.props.onBlur && this.props.onBlur();
         }}
-        {...this.props}
       />
     );
   };
 
   render() {
     return (
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <View style={styles.container}>
         {this.renderAnimatedTextInput()}
         {this.renderIcon()}
       </View>

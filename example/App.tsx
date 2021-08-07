@@ -21,7 +21,7 @@ const App = () => {
         justifyContent: "space-evenly",
       }}
     >
-      <InteractiveTextInput />
+      <InteractiveTextInput mainColor="red" />
       <InteractiveTextInput placeholder="Password" secureTextEntry enableIcon />
       <InteractiveTextInput />
     </SafeAreaView>
