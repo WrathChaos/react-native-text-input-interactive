@@ -35,7 +35,7 @@ npm i react-native-text-input-interactive
 import InteractiveTextInput from "react-native-text-input-interactive";
 ```
 
-## Fundamental Usage
+## Basic Usage
 
 ```jsx
 <InteractiveTextInput onChangeText={(text: string) => {}} />
