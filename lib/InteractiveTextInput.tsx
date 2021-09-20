@@ -31,7 +31,7 @@ type CustomImageStyleProp =
   | StyleProp<ImageStyle>
   | Array<StyleProp<ImageStyle>>;
 
-interface IInteractiveTextInputProps extends TextInputProps {
+export interface IInteractiveTextInputProps extends TextInputProps {
   style?: CustomStyleProp;
   textInputStyle?: CustomTextStyleProp;
   iconContainerStyle?: CustomStyleProp;
