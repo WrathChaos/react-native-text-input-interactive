@@ -12,7 +12,7 @@
 
 <p align="center">
   <img alt="React Native Text Input Interactive"
-        src="assets/Screenshots/react-native-text-input-interactive.gif" height='850' />
+        src="assets/Screenshots/react-native-text-input-interactive.gif" height='850' width="450" />
 </p>
 
 # Installation
