@@ -1,4 +1,10 @@
-import { ViewStyle, Dimensions, ImageStyle, StyleSheet } from "react-native";
+import {
+  ViewStyle,
+  Dimensions,
+  ImageStyle,
+  StyleSheet,
+  TextStyle,
+} from "react-native";
 const { width: ScreenWidth } = Dimensions.get("screen");
 
 interface Style {
@@ -7,7 +13,7 @@ interface Style {
   iconImageStyle: ImageStyle;
 }
 
-export const _textInputStyle = (borderColor: any): ViewStyle => ({
+export const _textInputStyle = (borderColor: any): TextStyle => ({
   height: 50,
   width: ScreenWidth * 0.9,
   borderWidth: 1,
@@ -17,6 +23,7 @@ export const _textInputStyle = (borderColor: any): ViewStyle => ({
   borderColor: borderColor,
   justifyContent: "center",
   backgroundColor: "#eceef5",
+  color: "#000",
 });
 
 export default StyleSheet.create<Style>({
