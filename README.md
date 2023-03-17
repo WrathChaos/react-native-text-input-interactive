@@ -66,8 +66,7 @@ TextInput and Icon is fully customizable thanks to `prop-drilling`, you can use 
 | animatedPlaceholderTextColor |       string        |     #757575      | change the placeholder text animated color                                                                            |
 | ImageComponent               |      Component      |      Image       | set your own image component such as; `FastImage`                                                                     |
 | IconComponent                |      Component      | TouchableOpacity | set your own icon component such as; [react-native-bounceable](https://github.com/WrathChaos/react-native-bounceable) |
-| enableIcon                   |       boolean       |      false       | set the true for using the right sided icon                                                                           |
-| enableIcon                   |       boolean       |      false       | set the true for using the right sided icon                                                                           |
+| enableIcon                   |       boolean       |      false       | set the true for using the right sided icon                                                                           |                              |
 | iconImageSource              | ImageSourcePropType |    undefined     | set the icon image                                                                                                    |
 | onIconPress                  |      Function       |    undefined     | set your own logic for the icon button functionality when the icon is pressed                                         |
 | style                        |      ViewStyle      |     default      | set or override the style object for the main container                                                               |
