@@ -12,6 +12,7 @@ import {
   ImageStyle,
   ImageSourcePropType,
 } from "react-native";
+
 /**
  * ? Local Imports
  */
@@ -25,17 +26,11 @@ const PLACEHOLDER_COLOR = "#757575";
 const ORIGINAL_VALUE = 0;
 const ANIMATED_VALUE = 1;
 
-type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
-type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
-type CustomImageStyleProp =
-  | StyleProp<ImageStyle>
-  | Array<StyleProp<ImageStyle>>;
-
 export interface IInteractiveTextInputProps extends TextInputProps {
-  style?: CustomStyleProp;
-  textInputStyle?: CustomTextStyleProp;
-  iconContainerStyle?: CustomStyleProp;
-  iconImageStyle?: CustomImageStyleProp;
+  style?: StyleProp<ViewStyle>;
+  textInputStyle?: StyleProp<TextStyle>;
+  iconContainerStyle?: StyleProp<ViewStyle>;
+  iconImageStyle?: StyleProp<ImageStyle>;
   iconImageSource?: ImageSourcePropType;
   ImageComponent?: any;
   IconComponent?: any;
@@ -143,7 +138,7 @@ export default class InteractiveTextInput extends React.Component<
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style]}>
         {this.renderAnimatedTextInput()}
         {this.renderIcon()}
       </View>
