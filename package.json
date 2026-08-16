@@ -1,6 +1,6 @@
 {
   "name": "react-native-text-input-interactive",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Fully customizable, animated text input for React Native with beautiful and elegant design",
   "main": "./build/dist/InteractiveTextInput.js",
   "repository": "git@github.com:WrathChaos/react-native-text-input-interactive.git",
@@ -30,7 +30,10 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-native": ">=0.64.0"
+  },
   "devDependencies": {
     "@types/react": "^16.9.53",
     "@types/react-native": "^0.63.25",
@@ -53,5 +56,17 @@
       "npx prettier --write",
       "eslint src/*.js --fix-dry-run"
     ]
-  }
+  },
+  "types": "./build/dist/InteractiveTextInput.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/dist/InteractiveTextInput.d.ts",
+      "default": "./build/dist/InteractiveTextInput.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "build/dist",
+    "!build/dist/tsconfig.tsbuildinfo"
+  ]
 }
